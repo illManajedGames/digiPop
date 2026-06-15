@@ -125,8 +125,19 @@ class GameProgress {
         static let firstClearTooltipShown  = "firstClearTooltipShown"
     }
 
+    #if DEBUG
+    private let debugTotalPops = Int.random(in: 5001...9999)
+    private let debugBoardPops = Int.random(in: 501...999)
+    #endif
+
     var totalPops: Int {
-        get { UserDefaults.standard.integer(forKey: Keys.totalPops) }
+        get {
+            #if DEBUG
+            return debugTotalPops
+            #else
+            return UserDefaults.standard.integer(forKey: Keys.totalPops)
+            #endif
+        }
         set { UserDefaults.standard.set(newValue, forKey: Keys.totalPops) }
     }
 
@@ -139,7 +150,11 @@ class GameProgress {
     }
 
     func pops(for shape: BoardShape) -> Int {
-        UserDefaults.standard.integer(forKey: Keys.boardPopsPrefix + shape.rawValue)
+        #if DEBUG
+        return debugBoardPops
+        #else
+        return UserDefaults.standard.integer(forKey: Keys.boardPopsPrefix + shape.rawValue)
+        #endif
     }
 
     @discardableResult
@@ -171,8 +186,8 @@ class GameProgress {
         var cleared = clearedBoardSet
         cleared.insert(shape.rawValue)
         UserDefaults.standard.set(Array(cleared), forKey: Keys.clearedBoards)
-        if !cleared.isEmpty     { earnAchievement(.firstClear) }
-        if cleared.count >= 5   { earnAchievement(.fiveClear) }
+        earnAchievement(.firstClear)
+        if cleared.count >= 5 { earnAchievement(.fiveClear) }
         checkCompletionist()
     }
 
@@ -185,10 +200,34 @@ class GameProgress {
 
     // MARK: - Unlock checks
 
-    func isUnlocked(_ shape: BoardShape)      -> Bool { totalPops >= shape.unlockPops }
-    func isUnlocked(_ sound: SoundProfile)    -> Bool { totalPops >= sound.unlockPops }
-    func isUnlocked(_ theme: UITheme)         -> Bool { totalPops >= theme.unlockPops }
-    func isUnlocked(_ boardTheme: BoardTheme) -> Bool { totalPops >= boardTheme.unlockPops }
+    func isUnlocked(_ shape: BoardShape)      -> Bool {
+        #if DEBUG
+        return true
+        #else
+        return totalPops >= shape.unlockPops
+        #endif
+    }
+    func isUnlocked(_ sound: SoundProfile)    -> Bool {
+        #if DEBUG
+        return true
+        #else
+        return totalPops >= sound.unlockPops
+        #endif
+    }
+    func isUnlocked(_ theme: UITheme)         -> Bool {
+        #if DEBUG
+        return true
+        #else
+        return totalPops >= theme.unlockPops
+        #endif
+    }
+    func isUnlocked(_ boardTheme: BoardTheme) -> Bool {
+        #if DEBUG
+        return true
+        #else
+        return totalPops >= boardTheme.unlockPops
+        #endif
+    }
 
     var hasShownFirstClearTooltip: Bool {
         get { UserDefaults.standard.bool(forKey: Keys.firstClearTooltipShown) }
@@ -206,7 +245,11 @@ class GameProgress {
     // MARK: - Achievements
 
     func isEarned(_ achievement: Achievement) -> Bool {
-        UserDefaults.standard.bool(forKey: Keys.achievementPrefix + achievement.rawValue)
+        #if DEBUG
+        return true
+        #else
+        return UserDefaults.standard.bool(forKey: Keys.achievementPrefix + achievement.rawValue)
+        #endif
     }
 
     var earnedCount: Int { Achievement.allCases.filter { isEarned($0) }.count }

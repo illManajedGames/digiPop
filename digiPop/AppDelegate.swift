@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import GoogleMobileAds
 import UserMessagingPlatform
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Start the SDK as early as possible (Google's recommendation).
+        // Actual ad loading is gated on consent in GameViewController.
+        MobileAds.shared.start()
         // Pre-fetch consent status so it's ready by the time the root VC appears.
-        // Actual form presentation and MobileAds.shared.start() happen in GameViewController
-        // after consent is confirmed, as required by Google and Apple ATT policy.
         ConsentInformation.shared.requestConsentInfoUpdate(
             with: RequestParameters()
         ) { _ in }

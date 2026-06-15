@@ -206,7 +206,7 @@ class SettingsManager {
     }
 
     var boardTheme: BoardTheme {
-        get { BoardTheme(rawValue: UserDefaults.standard.string(forKey: Keys.boardTheme) ?? "") ?? .frost }
+        get { BoardTheme(rawValue: UserDefaults.standard.string(forKey: Keys.boardTheme) ?? "") ?? .rainbow }
         set { UserDefaults.standard.set(newValue.rawValue, forKey: Keys.boardTheme) }
     }
 

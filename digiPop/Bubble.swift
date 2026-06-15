@@ -265,10 +265,6 @@ class Bubble: SKNode {
         gc.restoreGState()
     }
 
-    private static func sq(_ x: CGFloat, _ y: CGFloat, _ r: CGFloat) -> CGRect {
-        CGRect(x: x - r, y: y - r, width: r * 2, height: r * 2)
-    }
-
     private static func w(_ a: CGFloat) -> CGColor {
         UIColor.white.withAlphaComponent(a).cgColor
     }

@@ -11,6 +11,7 @@ class GameViewController: UIViewController {
     private var bannerView: BannerView!
     private var bannerSetup = false
     private var consentFlowStarted = false
+    private var splashFinished = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,11 @@ class GameViewController: UIViewController {
         view.ignoresSiblingOrder = true
         view.showsFPS = false
         view.showsNodeCount = false
+
+        // Register before the splash can fire so splashFinished is always recorded,
+        // even if the consent flow delays banner setup past the 2s splash.
+        NotificationCenter.default.addObserver(self, selector: #selector(onSplashDidFinish),
+                                               name: .splashDidFinish, object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -32,14 +38,13 @@ class GameViewController: UIViewController {
         consentFlowStarted = true
 
         // Present the UMP consent form if required (handles GDPR, CCPA, and the ATT prompt).
-        // On completion — whether a form was shown or not — start ads if consent allows it.
-        UMPConsentForm.loadAndPresentIfRequired(from: self) { [weak self] _ in
-            if UMPConsentInformation.sharedInstance.canRequestAds {
-                self?.startMobileAds()
-            }
+        // Always start ads on completion — the SDK serves non-personalized ads when
+        // explicit consent wasn't collected (handles GDPR automatically).
+        ConsentForm.loadAndPresentIfRequired(from: self) { [weak self] _ in
+            self?.startMobileAds()
         }
-        // Handle the case where consent was already given in a prior session.
-        if UMPConsentInformation.sharedInstance.canRequestAds {
+        // Fast path: start ads immediately if consent is already established.
+        if ConsentInformation.shared.canRequestAds {
             startMobileAds()
         }
     }
@@ -47,15 +52,17 @@ class GameViewController: UIViewController {
     private func startMobileAds() {
         guard !bannerSetup else { return }
         bannerSetup = true
-        MobileAds.shared.start()
         setupBanner()
     }
 
     private func setupBanner() {
         let safeWidth = view.frame.inset(by: view.safeAreaInsets).width
         bannerView = BannerView(adSize: largeAnchoredAdaptiveBanner(width: safeWidth))
-        // TODO: replace with your production ad unit ID from AdMob console
+        #if DEBUG
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        #else
+        bannerView.adUnitID = "ca-app-pub-4626224236931889/5944146726"
+        #endif
         bannerView.rootViewController = self
         bannerView.backgroundColor = .clear
         bannerView.translatesAutoresizingMaskIntoConstraints = false
@@ -72,10 +79,13 @@ class GameViewController: UIViewController {
         bannerView.alpha = 0
         bannerView.load(Request())
 
-        NotificationCenter.default.addObserver(self, selector: #selector(revealBanner),
-                                               name: .splashDidFinish, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateBannerBorder),
                                                name: .uiThemeDidChange, object: nil)
+
+        // Splash may have already fired if the consent form delayed ads setup past the 2s splash.
+        if splashFinished {
+            revealBanner()
+        }
     }
 
     @objc private func updateBannerBorder() {
@@ -83,12 +93,20 @@ class GameViewController: UIViewController {
         bannerView?.layer.borderColor = accent.withAlphaComponent(0.6).cgColor
     }
 
-    @objc private func revealBanner() {
+    @objc private func onSplashDidFinish() {
+        splashFinished = true
+        revealBanner()
+    }
+
+    private func revealBanner() {
+        // Banner not set up yet (consent flow still running) — setupBanner() will
+        // call revealBanner() itself once ready because splashFinished is already set.
+        guard bannerView != nil else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) { [weak self] in
-            guard let self else { return }
+            guard let self, let banner = self.bannerView else { return }
             self.updateBannerBorder()
             UIView.animate(withDuration: 0.4) {
-                self.bannerView.alpha = 1
+                banner.alpha = 1
             }
         }
     }

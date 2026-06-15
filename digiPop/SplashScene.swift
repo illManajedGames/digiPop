@@ -145,3 +145,7 @@ class SplashScene: SKScene {
         ]))
     }
 }
+
+extension Notification.Name {
+    static let splashDidFinish = Notification.Name("digiPop.splashDidFinish")
+}

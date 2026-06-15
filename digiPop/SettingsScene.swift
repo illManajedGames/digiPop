@@ -31,45 +31,9 @@ class SettingsScene: SKScene {
     override func sceneDidLoad() {
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         backgroundColor = palette.bgColor
-        addSheenLayer()
+        addSheenLayer(overlayBase: palette.overlayBase)
         buildLayout()
         SoundManager.shared.applySettings()
-    }
-
-    // MARK: - Background
-
-    private func addSheenLayer() {
-        let grainSize = CGSize(width: 256, height: 256)
-        let grainImage = UIGraphicsImageRenderer(size: grainSize).image { ctx in
-            let gc = ctx.cgContext
-            for _ in 0..<2800 {
-                let x = CGFloat.random(in: 0..<grainSize.width)
-                let y = CGFloat.random(in: 0..<grainSize.height)
-                let a = CGFloat.random(in: 0.0...0.055)
-                gc.setFillColor(palette.overlayBase.withAlphaComponent(a).cgColor)
-                gc.fill(CGRect(x: x, y: y, width: 1.5, height: 1.5))
-            }
-        }
-        let grainNode = SKSpriteNode(texture: SKTexture(image: grainImage), size: size)
-        grainNode.zPosition = -11
-        addChild(grainNode)
-
-        let sheenImage = UIGraphicsImageRenderer(size: size).image { ctx in
-            let gc = ctx.cgContext
-            let center = CGPoint(x: size.width / 2, y: size.height / 2)
-            let radius = max(size.width, size.height) * 0.65
-            let colors = [palette.overlayBase.withAlphaComponent(0.10).cgColor,
-                          palette.overlayBase.withAlphaComponent(0.00).cgColor] as CFArray
-            if let g = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(),
-                                  colors: colors, locations: [0, 1] as [CGFloat]) {
-                gc.drawRadialGradient(g, startCenter: center, startRadius: 0,
-                                      endCenter: center, endRadius: radius,
-                                      options: [.drawsAfterEndLocation])
-            }
-        }
-        let sheenNode = SKSpriteNode(texture: SKTexture(image: sheenImage), size: size)
-        sheenNode.zPosition = -10
-        addChild(sheenNode)
     }
 
     // MARK: - Layout
@@ -118,11 +82,11 @@ class SettingsScene: SKScene {
         addBackButton()
     }
 
-    private func addSectionHeader(_ text: String, y: CGFloat, dim: Bool = false) {
+    private func addSectionHeader(_ text: String, y: CGFloat) {
         let lbl = SKLabelNode(fontNamed: "AvenirNext-Bold")
         lbl.text      = text
         lbl.fontSize  = 11
-        lbl.fontColor = dim ? palette.dimText : palette.muteText
+        lbl.fontColor = palette.muteText
         lbl.horizontalAlignmentMode = .left
         lbl.position  = CGPoint(x: -size.width / 2 + 24, y: y)
         addChild(lbl)
@@ -545,46 +509,6 @@ class SettingsScene: SKScene {
             thumb.position.x  = thumbX
             thumb.fillColor   = enabled ? .white : palette.overlayBase.withAlphaComponent(0.50)
         }
-    }
-
-    // MARK: - Coming soon cards
-
-    private func addComingSoonCard(title: String, sub: String, y: CGFloat) {
-        let cardW = size.width - 32
-
-        let card = SKShapeNode(rectOf: CGSize(width: cardW, height: 72), cornerRadius: 14)
-        card.fillColor   = palette.cardFill.withAlphaComponent(0.40)
-        card.strokeColor = palette.cardStroke.withAlphaComponent(0.40)
-        card.lineWidth   = 1
-        card.position    = CGPoint(x: 0, y: y)
-        addChild(card)
-
-        let titleLbl = SKLabelNode(fontNamed: "AvenirNext-Bold")
-        titleLbl.text      = title
-        titleLbl.fontSize  = 15
-        titleLbl.fontColor = palette.dimText
-        titleLbl.horizontalAlignmentMode = .left
-        titleLbl.verticalAlignmentMode   = .center
-        titleLbl.position  = CGPoint(x: -size.width / 2 + 32, y: y + 10)
-        addChild(titleLbl)
-
-        let subLbl = SKLabelNode(fontNamed: "AvenirNext-Regular")
-        subLbl.text      = sub
-        subLbl.fontSize  = 12
-        subLbl.fontColor = palette.dimText.withAlphaComponent(0.55)
-        subLbl.horizontalAlignmentMode = .left
-        subLbl.verticalAlignmentMode   = .center
-        subLbl.position  = CGPoint(x: -size.width / 2 + 32, y: y - 10)
-        addChild(subLbl)
-
-        let badge = SKLabelNode(fontNamed: "AvenirNext-Bold")
-        badge.text      = "SOON"
-        badge.fontSize  = 9
-        badge.fontColor = palette.dimText
-        badge.horizontalAlignmentMode = .right
-        badge.verticalAlignmentMode   = .center
-        badge.position  = CGPoint(x: size.width / 2 - 32, y: y)
-        addChild(badge)
     }
 
     // MARK: - Bottom buttons
