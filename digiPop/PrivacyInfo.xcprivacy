@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- The app shows ads via Google Mobile Ads, which can use data for tracking. -->
+	<key>NSPrivacyTracking</key>
+	<true/>
+	<!-- VERIFY: list the ad/tracking domains your AdMob setup contacts.
+	     See Google's "Apple privacy details" documentation for the current list. -->
+	<key>NSPrivacyTrackingDomains</key>
+	<array/>
+	<!-- App-level data collection. The Google Mobile Ads SDK declares its own
+	     collected data types in its bundled privacy manifest; the app itself
+	     collects nothing additional that it transmits. -->
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array/>
+	<!-- Required-reason API usage by the app's own code. -->
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array>
+		<dict>
+			<!-- UserDefaults: GameProgress + SettingsManager store the player's
+			     own progress and preferences, read back only by this app. -->
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>CA92.1</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
