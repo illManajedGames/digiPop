@@ -11,16 +11,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2940E3982FB89AF60024B294 /* popBubs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = popBubs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2940E3982FB89AF60024B294 /* digiPop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = digiPop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		2940E3AD2FB89AF90024B294 /* Exceptions for "digiPop" folder in "popBubs" target */ = {
+		2940E3AD2FB89AF90024B294 /* Exceptions for "digiPop" folder in "digiPop" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 2940E3972FB89AF60024B294 /* popBubs */;
+			target = 2940E3972FB89AF60024B294 /* digiPop */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -28,7 +28,7 @@
 		2940E39A2FB89AF60024B294 /* digiPop */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				2940E3AD2FB89AF90024B294 /* Exceptions for "digiPop" folder in "popBubs" target */,
+				2940E3AD2FB89AF90024B294 /* Exceptions for "digiPop" folder in "digiPop" target */,
 			);
 			path = digiPop;
 			sourceTree = "<group>";
@@ -58,7 +58,7 @@
 		2940E3992FB89AF60024B294 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2940E3982FB89AF60024B294 /* popBubs.app */,
+				2940E3982FB89AF60024B294 /* digiPop.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,9 +66,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2940E3972FB89AF60024B294 /* popBubs */ = {
+		2940E3972FB89AF60024B294 /* digiPop */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2940E3AE2FB89AF90024B294 /* Build configuration list for PBXNativeTarget "popBubs" */;
+			buildConfigurationList = 2940E3AE2FB89AF90024B294 /* Build configuration list for PBXNativeTarget "digiPop" */;
 			buildPhases = (
 				2940E3942FB89AF60024B294 /* Sources */,
 				2940E3952FB89AF60024B294 /* Frameworks */,
@@ -81,12 +81,12 @@
 			fileSystemSynchronizedGroups = (
 				2940E39A2FB89AF60024B294 /* digiPop */,
 			);
-			name = popBubs;
+			name = digiPop;
 			packageProductDependencies = (
 				296CD3DA2FD13B6E005BA904 /* GoogleMobileAds */,
 			);
 			productName = popBubs;
-			productReference = 2940E3982FB89AF60024B294 /* popBubs.app */;
+			productReference = 2940E3982FB89AF60024B294 /* digiPop.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -121,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2940E3972FB89AF60024B294 /* popBubs */,
+				2940E3972FB89AF60024B294 /* digiPop */,
 			);
 		};
 /* End PBXProject section */
@@ -156,13 +156,16 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 49R3373KQR;
+				DEVELOPMENT_TEAM = J8MTS29378;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = digiPop/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = digiPOP;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.kids-games";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.family-games";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier is used to show you relevant ads and measure ad performance.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
@@ -172,7 +175,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_CFLAGS = "-Wno-incomplete-umbrella";
-				PRODUCT_BUNDLE_IDENTIFIER = games.illManajed.digiPop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.illmanajed.digiPop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -197,13 +200,16 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 49R3373KQR;
+				DEVELOPMENT_TEAM = J8MTS29378;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = digiPop/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = digiPOP;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.kids-games";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.family-games";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier is used to show you relevant ads and measure ad performance.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
@@ -213,7 +219,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_CFLAGS = "-Wno-incomplete-umbrella";
-				PRODUCT_BUNDLE_IDENTIFIER = games.illManajed.digiPop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.illmanajed.digiPop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -364,7 +370,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2940E3AE2FB89AF90024B294 /* Build configuration list for PBXNativeTarget "popBubs" */ = {
+		2940E3AE2FB89AF90024B294 /* Build configuration list for PBXNativeTarget "digiPop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2940E3AF2FB89AF90024B294 /* Debug */,

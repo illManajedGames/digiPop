@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2940E3972FB89AF60024B294"
-               BuildableName = "popBubs.app"
-               BlueprintName = "popBubs"
+               BuildableName = "digiPop.app"
+               BlueprintName = "digiPop"
                ReferencedContainer = "container:digiPop.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2940E3972FB89AF60024B294"
-            BuildableName = "popBubs.app"
-            BlueprintName = "popBubs"
+            BuildableName = "digiPop.app"
+            BlueprintName = "digiPop"
             ReferencedContainer = "container:digiPop.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2940E3972FB89AF60024B294"
-            BuildableName = "popBubs.app"
-            BlueprintName = "popBubs"
+            BuildableName = "digiPop.app"
+            BlueprintName = "digiPop"
             ReferencedContainer = "container:digiPop.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,6 +74,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "digipop"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
