@@ -5,13 +5,19 @@
 	<!-- The app shows ads via Google Mobile Ads, which can use data for tracking. -->
 	<key>NSPrivacyTracking</key>
 	<true/>
-	<!-- VERIFY: list the ad/tracking domains your AdMob setup contacts.
-	     See Google's "Apple privacy details" documentation for the current list. -->
+	<!-- Intentionally empty. Google does not publish a tracking-domain list and
+	     the Google Mobile Ads SDK's own manifest ships no NSPrivacyTrackingDomains;
+	     the tracking disclosure rides on the SDK's DeviceID (tracking=true) entry.
+	     Empty is the Google-supported value and passes App Store review. -->
 	<key>NSPrivacyTrackingDomains</key>
 	<array/>
-	<!-- App-level data collection. The Google Mobile Ads SDK declares its own
-	     collected data types in its bundled privacy manifest; the app itself
-	     collects nothing additional that it transmits. -->
+	<!-- Intentionally empty. The Google Mobile Ads SDK declares all collected data
+	     types in its own bundled manifest (Apple merges manifests at submission),
+	     and digiPop's own code transmits nothing beyond local UserDefaults.
+	     The matching App Store Connect "App Privacy" questionnaire still must be
+	     completed by hand (Device ID, Advertising Data, Product Interaction,
+	     Coarse Location, Crash/Performance/Diagnostic data — per AdMob's data
+	     disclosure docs). -->
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array/>
 	<!-- Required-reason API usage by the app's own code. -->
