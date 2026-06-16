@@ -4,10 +4,6 @@
 <dict>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-4626224236931889~4063403086</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>This identifier is used to show you relevant ads and measure ad performance.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
