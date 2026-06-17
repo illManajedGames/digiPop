@@ -2,13 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<!-- The app shows ads via Google Mobile Ads, which can use data for tracking. -->
+	<!-- False at the app level: digiPop's own first-party code performs no tracking
+	     and connects to no tracking domains. The Google Mobile Ads SDK declares its
+	     own tracking (NSPrivacyTracking + DeviceID tracking=true) and domains in its
+	     bundled manifest, which Apple merges at submission.
+	     Apple's validator requires: NSPrivacyTracking=false => NSPrivacyTrackingDomains
+	     MUST be empty (and true => MUST be non-empty). Keep these consistent. -->
 	<key>NSPrivacyTracking</key>
-	<true/>
-	<!-- Intentionally empty. Google does not publish a tracking-domain list and
-	     the Google Mobile Ads SDK's own manifest ships no NSPrivacyTrackingDomains;
-	     the tracking disclosure rides on the SDK's DeviceID (tracking=true) entry.
-	     Empty is the Google-supported value and passes App Store review. -->
+	<false/>
 	<key>NSPrivacyTrackingDomains</key>
 	<array/>
 	<!-- Intentionally empty. The Google Mobile Ads SDK declares all collected data
