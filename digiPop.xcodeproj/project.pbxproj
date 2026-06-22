@@ -172,7 +172,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				OTHER_CFLAGS = "-Wno-incomplete-umbrella";
 				PRODUCT_BUNDLE_IDENTIFIER = com.illmanajed.digiPop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -215,7 +215,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				OTHER_CFLAGS = "-Wno-incomplete-umbrella";
 				PRODUCT_BUNDLE_IDENTIFIER = com.illmanajed.digiPop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
