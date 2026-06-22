@@ -155,7 +155,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J8MTS29378;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = digiPop/Info.plist;
@@ -172,7 +172,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.11;
 				OTHER_CFLAGS = "-Wno-incomplete-umbrella";
 				PRODUCT_BUNDLE_IDENTIFIER = com.illmanajed.digiPop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -198,7 +198,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J8MTS29378;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = digiPop/Info.plist;
@@ -215,7 +215,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.11;
 				OTHER_CFLAGS = "-Wno-incomplete-umbrella";
 				PRODUCT_BUNDLE_IDENTIFIER = com.illmanajed.digiPop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
